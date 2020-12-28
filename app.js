@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
-const bookRoute = require('./routes/books')
+const bookRoute = require('./routes/book')
 
 app.set('view engine', 'pug')
 

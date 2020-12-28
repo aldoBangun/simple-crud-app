@@ -10,14 +10,16 @@ nav.nav
          li.nav__item
             a.nav__link(href="/author") Add Author
       form.form.form-search(method="POST")
-               input(type="text" name="search" placeholder="book title...")
-               button.btn.btn-search(type="submit") Search
+         input.form__input(type="text" name="search" placeholder="book title...")
+         button.btn.btn-search(type="submit") Search
 main
    .container
       each book in books
          .card
             .card__head
-               img.card__image(src="uploads/"+book.cover alt=book.cover)
+               img.card__image(src="uploads/example.jpg" alt=book.cover)
             .card__body
                h3.card__title #{book.title}
-               small.card__subtitle #{book.name}
+               small.card__subtitle
+                  a(href="author/"+book.author_id) #{book.name}
+               a.btn.btn-details(href="/book/" + book.id) Details
