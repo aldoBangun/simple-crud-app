@@ -1,2 +1,22 @@
 title BookStore
-h1 hello #{name}
+
+nav.nav
+   .container.flex--between
+      .nav__brand BS
+      ul.nav__menu
+         li.nav__item
+            a.nav__link(href="/book") Add book
+         li.nav__item
+            .nav__link(href="/author") Add Author
+      form.form.form-search(method="POST")
+               input(type="text" name="search" placeholder="book title...")
+               button.btn.btn-search(type="submit") Search
+main
+   .container
+      each book in books
+         .card
+            .card__head
+               img.card__image(src="uploads/"+book.cover alt=book.title)
+            .card__body
+               h3.card__title book.title
+               small.card__subtitle book.name
