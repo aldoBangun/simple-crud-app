@@ -1,4 +1,5 @@
 title BookStore
+link(rel="stylesheet" href="./css/style.css")
 
 nav.nav
    .container.flex--between
@@ -7,7 +8,7 @@ nav.nav
          li.nav__item
             a.nav__link(href="/book") Add book
          li.nav__item
-            .nav__link(href="/author") Add Author
+            a.nav__link(href="/author") Add Author
       form.form.form-search(method="POST")
                input(type="text" name="search" placeholder="book title...")
                button.btn.btn-search(type="submit") Search
