@@ -16,7 +16,7 @@ main
       each book in books
          .card
             .card__head
-               img.card__image(src="uploads/"+book.cover alt=book.title)
+               img.card__image(src="uploads/"+book.cover alt=book.cover)
             .card__body
-               h3.card__title book.title
-               small.card__subtitle book.name
+               h3.card__title #{book.title}
+               small.card__subtitle #{book.name}
