@@ -80,6 +80,28 @@ small {
    border-radius: 100rem;
 }
 
+.text--style {
+   position: relative;
+   z-index: 1;
+   color: #000;
+}
+
+.text--style::after {
+   content: '';
+   position: absolute;
+   left: 0;
+   bottom: 0;
+   height: 50%;
+   width: 100%;
+   background-color: #f8b334;
+   z-index: -1;
+   transition: .3s ease-out;
+}
+
+.text--style:hover::after {
+   height: 100%;
+}
+
 /* main content */
 .nav {
    height: 5rem;
@@ -100,7 +122,7 @@ small {
 
 .form__input {
    display: inline-block;
-   background-color: #f0f0f0;
+   background-color: #fafafa;
    border: 1px solid #d0d0d0;
    height: 2rem;
    width: 15rem;
@@ -111,17 +133,43 @@ small {
    background-color: #f8b334;
 }
 
+.books {
+   display: grid;
+   grid-template-columns: repeat(5, 1fr);
+   grid-auto-rows: auto;
+   gap: 2rem;
+}
+
 .card {
-   padding: 2rem;
+   padding: 1rem;
    background-color: #fafafa;
    box-shadow: 10px 10px 20px rgba(0,0,0,.16);
    border-radius: .5rem;
+   height: max-content;
 }
 
 .card__head {
-   height: 200px;
+   height: 10rem;
 }
 
 .card__image {
    height: 100%;
+   width: 100%;
+   object-fit: cover;
+   border-radius: .5rem;
+}
+
+.card__title {
+   margin-bottom: 0;
+}
+
+.card__subtitle {
+   display: block;
+   margin-bottom: 1rem;
+}
+
+.btn-details {
+   background-color: #5c5cec;
+   color: #fafafa;
+   display: flex;
 }
