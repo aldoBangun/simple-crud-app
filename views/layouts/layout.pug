@@ -1,7 +1,7 @@
 head
    block head
+      link(rel="stylesheet" href="http://localhost:3000/css/style.css")
       title Book Store
-      link(rel="stylesheet" href="./css/style.css")
 body
    block navigation
       nav.nav
@@ -9,9 +9,9 @@ body
             .nav__brand Book Store
             ul.nav__menu
                li.nav__item
-                  a.nav__link(href="/book") Add book
+                  a.nav__link(href="/book") Books
                li.nav__item
-                  a.nav__link(href="/author") Add Author
+                  a.nav__link(href="/author") Author
             form.form.form-search(method="POST")
                input.form__input(type="text" name="search" placeholder="book title...")
                button.btn.btn-search(type="submit") Search
