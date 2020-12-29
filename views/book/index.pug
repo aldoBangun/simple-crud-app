@@ -1,2 +1,14 @@
-title Book
-link(rel="stylesheet" href="./css/style.css")
+extends layouts/layout
+
+block content
+   main.content
+      .container.books
+         each book in books
+            .card
+               .card__head
+                  img.card__image(src="uploads/example.jpg" alt=book.cover)
+               .card__body
+                  h3.card__title #{book.title}
+                  small.card__subtitle
+                     a.text--style(href="author/"+book.author_id) #{book.name}
+                  a.btn.btn-details(href="/book/" + book.id) Details

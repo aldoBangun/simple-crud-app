@@ -1,4 +1,4 @@
-const {createBook, getBooks ,getBookByTitle} = require('../models/book')
+const {createBook, getBooks, getBookById, getBookByTitle} = require('../models/book')
 const express = require('express')
 const router = express.Router()
 const multer = require('multer')
@@ -17,8 +17,16 @@ const upload = multer({storage, limits: {
 }})
 
 router.get('/', (req, res) =>{
-   getBooks((err, results) => {
-      res.render('index', {books: results})
+   getBooks((err, books) => {
+      res.render('index', {books})
+   })
+})
+
+router.get('/:id', (req, res) => {
+   getBookById(+req.params.id, (err, books) => {
+      if(err) return res.render('server-error')
+      if(!books.length) return res.render('not-found')
+      res.render('book/details', {book: books[0]})
    })
 })
 

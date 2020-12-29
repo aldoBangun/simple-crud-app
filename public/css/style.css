@@ -53,6 +53,10 @@ small {
    color: #404040;
 }
 
+main {
+   min-height: 100vh;
+}
+
 
 /* utilities */
 .container {

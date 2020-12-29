@@ -7,10 +7,13 @@ module.exports = {
    getBooks: (callback) => {
       sql.query('SELECT * FROM book JOIN author ON book.author_id = author.id', callback)
    },
+   getBookById: (id, callback) => {
+      sql.query('SELECT * FROM book JOIN author ON book.author_id = author.id WHERE book.id = ?', [id], callback)
+   },
    getBookByTitle: (keyword, callback) => {
       sql.query(
          'SELECT * FROM book JOIN author ON book.author_id = author.id WHERE title LIKE "%?%"',
-         keyword,
+         [keyword],
          callback
       )
    }
