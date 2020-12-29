@@ -1,25 +1,14 @@
-title BookStore
-link(rel="stylesheet" href="./css/style.css")
+extends layouts/head
 
-nav.nav
-   .container.flex--between
-      .nav__brand BS
-      ul.nav__menu
-         li.nav__item
-            a.nav__link(href="/book") Add book
-         li.nav__item
-            a.nav__link(href="/author") Add Author
-      form.form.form-search(method="POST")
-         input.form__input(type="text" name="search" placeholder="book title...")
-         button.btn.btn-search(type="submit") Search
-main
-   .container.books
-      each book in books
-         .card
-            .card__head
-               img.card__image(src="uploads/example.jpg" alt=book.cover)
-            .card__body
-               h3.card__title #{book.title}
-               small.card__subtitle
-                  a.text--style(href="author/"+book.author_id) #{book.name}
-               a.btn.btn-details(href="/book/" + book.id) Details
+block content
+   main
+      .container.books
+         each book in books
+            .card
+               .card__head
+                  img.card__image(src="uploads/example.jpg" alt=book.cover)
+               .card__body
+                  h3.card__title #{book.title}
+                  small.card__subtitle
+                     a.text--style(href="author/"+book.author_id) #{book.name}
+                  a.btn.btn-details(href="/book/" + book.id) Details

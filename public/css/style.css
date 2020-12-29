@@ -93,7 +93,7 @@ small {
    bottom: 0;
    height: 50%;
    width: 100%;
-   background-color: #f8b334;
+   background-color: #f8b33444;
    z-index: -1;
    transition: .3s ease-out;
 }
@@ -143,9 +143,14 @@ small {
 .card {
    padding: 1rem;
    background-color: #fafafa;
-   box-shadow: 10px 10px 20px rgba(0,0,0,.16);
+   box-shadow: 5px 5px 10px rgba(0,0,0,.16);
    border-radius: .5rem;
    height: max-content;
+   transition: .15s ease-out;
+}
+
+.card:hover {
+   box-shadow: 10px 10px 20px rgba(0,0,0,.1);
 }
 
 .card__head {
@@ -172,4 +177,10 @@ small {
    background-color: #5c5cec;
    color: #fafafa;
    display: flex;
+}
+
+.footer {
+   height: 40vh;
+   background-color: #2f2f2f;
+   color: #fafafa;
 }
