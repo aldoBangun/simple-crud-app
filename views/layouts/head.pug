@@ -1,0 +1,21 @@
+head
+   block head
+      title Book Store
+      link(rel="stylesheet" href="./css/style.css")
+body
+   block navigation
+      nav.nav
+         .container.flex--between
+            .nav__brand Book Store
+            ul.nav__menu
+               li.nav__item
+                  a.nav__link(href="/book") Add book
+               li.nav__item
+                  a.nav__link(href="/author") Add Author
+            form.form.form-search(method="POST")
+               input.form__input(type="text" name="search" placeholder="book title...")
+               button.btn.btn-search(type="submit") Search
+   block content
+   block footer
+      footer.footer
+         .container.flex--between Book Store
