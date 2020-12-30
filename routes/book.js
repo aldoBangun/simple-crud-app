@@ -1,4 +1,5 @@
 const {createBook, getBooks, getBookById, getBookByTitle} = require('../models/book')
+const {getAuthors} = require('../models/author')
 const express = require('express')
 const router = express.Router()
 const multer = require('multer')
@@ -12,13 +13,24 @@ const storage = multer.diskStorage({
    }
 })
 
-const upload = multer({storage, limits: {
-   fileSize: 1024 * 1024 * 2
-}})
+const limits = {fileSize: 1024 * 1024 * 5}
+
+const upload = multer({storage, limits})
+
+router.post('/', upload.single('cover'), (req, res) => {
+   req.body.cover = req.file.filename
+   createBook(req.body, (err, results) => {
+      if(err) return res.send({message: err.message})
+      res.redirect('/book')
+   })
+})
 
 router.get('/', (req, res) =>{
    getBooks((err, books) => {
-      res.render('index', {books})
+      if(err) return res.json({err})
+      getAuthors((error, authors) => {
+         res.render('book/index', {books, authors})
+      }) 
    })
 })
 
