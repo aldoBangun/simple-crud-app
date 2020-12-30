@@ -5,7 +5,7 @@ module.exports = {
       sql.query('INSERT INTO book SET ?', data, callback)
    },
    getBooks: (callback) => {
-      sql.query('SELECT * FROM book JOIN author ON book.author_id = author.id', callback)
+      sql.query('SELECT book.id AS id, title, cover, author_id, name FROM book JOIN author ON book.author_id = author.id', callback)
    },
    getBookById: (id, callback) => {
       sql.query('SELECT * FROM book JOIN author ON book.author_id = author.id WHERE book.id = ?', [id], callback)
