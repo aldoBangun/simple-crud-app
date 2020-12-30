@@ -1,7 +1,10 @@
 head
    block head
-      link(rel="stylesheet" href="http://localhost:3000/css/style.css")
+      link(rel="stylesheet" href="/css/style.css")
+      link(rel="stylesheet" href="/css/font-awesome.css")
       title Book Store
+      script(src="/js/axios.js" defer)
+      script(src="/js/app.js" defer)
 body
    block navigation
       nav.nav
@@ -12,9 +15,10 @@ body
                   a.nav__link(href="/book") Books
                li.nav__item
                   a.nav__link(href="/author") Author
-            form.form.form-search(method="POST")
+            form.form.form-search(method="POST" action="/book/search")
                input.form__input(type="text" name="search" placeholder="book title...")
-               button.btn.btn-search(type="submit") Search
+               button.btn.btn-search(type="submit")
+                  i.fas.fa-search
    block content
    block footer
       footer.footer

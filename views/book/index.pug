@@ -1,14 +1,47 @@
-extends layouts/layout
+extends ../layouts/layout
+mixin formGroup(label, name, type = 'text', textarea)
+   .form__group
+      label.form__label(for=label)= label
+      if textarea
+         textarea.form__input(id=label name=name rows="50")
+      else
+         if type === 'number'
+            input.form__input(type=type, id=label, min="0", name=name)
+         else if type === 'file'
+            input(type=type, id=label, name=name)
+         else
+            input.form__input(type=type, id=label, name=name)
+
 
 block content
    main.content
-      .container.books
-         each book in books
-            .card
-               .card__head
-                  img.card__image(src="uploads/example.jpg" alt=book.cover)
-               .card__body
-                  h3.card__title #{book.title}
-                  small.card__subtitle
-                     a.text--style(href="author/"+book.author_id) #{book.name}
-                  a.btn.btn-details(href="/book/" + book.id) Details
+      .container
+         button.btn.btn-search.btn.create-book
+            i.fas.fa-book  New Book
+         .card.p-2
+            form.add-book(method="POST" enctype="multipart/form-data")
+               .flex
+                  section
+                     +formGroup('title', 'title')
+                     .form__group
+                        label.form__label(for="author") Author
+                        select.form__input(name="author_id", id="author")
+                           each author in authors
+                              option(value=author.id) #{author.name}
+                     +formGroup('cover', 'cover', 'file')
+                  section
+                     +formGroup('publish', 'published_at', 'date')
+                     +formGroup('price', 'price', 'number')
+                     +formGroup('description', 'description', null, true)
+               button.btn.btn-details(type="submit")
+                  i.fas.fa-plus  Add Book
+         .books
+            each book in books
+               .card
+                  .card__head
+                     img.card__image(src="uploads/"+book.cover alt=book.cover)
+                  .card__body
+                     h3.card__title #{book.title}
+                     small.card__subtitle
+                        a.text--style(href="author/"+book.author_id) #{book.name}
+                     a.btn.btn-details(href="/book/" + book.id) Details

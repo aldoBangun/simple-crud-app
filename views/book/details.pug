@@ -1,5 +1,24 @@
 extends ../layouts/layout
+mixin bookinfo(label, output)
+   tr
+      td
+         strong= label
+      td= output
 
 block content
    main
-      h1 #{book.title}
+      .container.flex.book-details
+         .book-image
+            img.book__cover(src="../uploads/"+book.cover alt=book.cover)
+         .book-info
+            h2.book__title #{book.title}
+            table
+               +bookinfo('Author', book.name)
+               if book.price !== 0
+                  +bookinfo('Price', book.price.toLocaleString('id-ID', {style: 'currency', currency: 'IDR'}))
+               else
+                  +bookinfo('Price', "Free")
+               +bookinfo('Published Date', book.published_at)
+               +bookinfo('Description', book.description)
+            button.btn.btn--rounded.btn-search
+               i.fas.fa-heart  Like
