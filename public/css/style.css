@@ -21,8 +21,8 @@ body {
 }
 
 input,
-textarea,
-button {
+button,
+textarea {
    font-family: inherit;
    border: none;
 }
@@ -30,6 +30,11 @@ button {
 button {
    cursor: pointer;
 }
+
+textarea {
+   resize: none;
+}
+
 
 ol,
 ul {
@@ -55,6 +60,7 @@ small {
 
 main {
    min-height: 100vh;
+   padding: 5rem 0;
 }
 
 
@@ -80,6 +86,10 @@ main {
    background-color: #909090;
 }
 
+.btn:hover {
+   opacity: .8;
+}
+
 .btn--rounded {
    border-radius: 100rem;
 }
@@ -97,9 +107,9 @@ main {
    bottom: 0;
    height: 50%;
    width: 100%;
-   background-color: #f8b33444;
+   background-color: #f8b334bb;
    z-index: -1;
-   transition: .3s ease-out;
+   transition: .15s ease-out;
 }
 
 .text--style:hover::after {
@@ -138,7 +148,6 @@ main {
 
 .content {
    height: max-content;
-   padding: 5rem 0;
 }
 
 .books {
@@ -191,4 +200,54 @@ main {
    height: 40vh;
    background-color: #2f2f2f;
    color: #fafafa;
+}
+
+.book-details {
+   display: flex;
+   gap: 5rem;
+}
+
+.book-image {
+   width: 300px;
+   height: 400px;
+}
+
+.book__cover {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+
+.book-info {
+   flex: 1;
+}
+
+.book__title {
+   margin-top: 0;
+}
+
+.form__group {
+   margin-bottom: 1.5rem;
+}
+
+.form__label {
+   display: block;
+   font-weight: 500;
+   text-transform: capitalize;
+   margin-bottom: .8rem;
+}
+
+.form__input {
+   border: 1px solid #ddd;
+   background-color: #efefef;
+}
+
+/* utilities */
+
+.p-2 {
+   padding: 2rem;
+}
+
+.flex {
+   display: flex;
 }
